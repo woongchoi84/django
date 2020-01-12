@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+<script src="{% static 'js/modernizr.custom.js' %}"></script>
+
+<header class="clearfix">
+	<h1>Post Example</h1>
+</header>
+
+<div class="main">
+	<ul class="cbp_tmtimeline">
+
+{% for post in posts %}
+		<li>
+			<time class="cbp_tmtime" datetime={{ post.created_date }}><span>{{ post.created_date.day }}/{{ post.created_date.month }}/{{ post.created_date.year }}</span><span>{{ post.created_date.hour }}:{{ post.created_date.minute}} </span></time>
+			<!-- icon (phone) can be modified to screen, mail, earth -->
+			<div class="cbp_tmicon cbp_tmicon-phone"></div>
+			<div class="cbp_tmlabel">
+				<h2>{{ post.title }}</h2>
+				<p>{{ post.text | linebreaksbr }}</p>
+			</div>
+		</li>
+{% endfor %}
+	</ul>
+</div>
